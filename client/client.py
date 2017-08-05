@@ -1,4 +1,3 @@
-import threading
 import socket
 
 
@@ -11,11 +10,10 @@ class Client():
         while (connectionSevered == 0):
             try:
                 print("Enter message:")
-                response = input()
-                print(response)
-                s.send(response.encode())
+                message = input()
+                s.send(message.encode())
             except:
-                print('idk man')
+                print('something went wrong')
 
 if __name__ == '__main__':
     Client().run()
