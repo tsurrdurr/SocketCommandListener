@@ -1,24 +1,21 @@
 import threading
 import socket
 
-class client(threading.Thread):
-    def __init__(self, conn):
-        super(client, self).__init__()
-        self.conn = conn
-        self.data = ""
 
+class Client():
     def run(self):
-        while True:
-            self.data = self.data + self.conn.recv(1024)
-            if self.data.endswith(u"\r\n"):
-                print(self.data)
-                self.data = ""
+        connectionSevered = 0
+        s = socket.socket()
+        s.connect(('localhost', 10000))
+        print("connectionSevered:{0}".format(connectionSevered))
+        while (connectionSevered == 0):
+            try:
+                print("Enter message:")
+                response = input()
+                print(response)
+                s.send(response.encode())
+            except:
+                print('idk man')
 
-    def send_msg(self,msg):
-        self.conn.send(msg)
-
-    def close(self):
-        self.conn.close()
-
-
-cl = client()
+if __name__ == '__main__':
+    Client().run()
