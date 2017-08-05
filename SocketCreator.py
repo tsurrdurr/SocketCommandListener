@@ -6,7 +6,8 @@ class SocketCreator:
     default_host = 'localhost'
     default_port = 10000
 
-    def create(self, host, port):
+    @staticmethod
+    def create(host, port):
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.bind((host, port))
         return s

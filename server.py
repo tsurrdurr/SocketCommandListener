@@ -2,14 +2,14 @@ import SocketCreator as creator
 import socket
 import sys
 
-class Server:
 
+class Server:
     host = 'localhost'
     port = 10000
 
     def main(self):
         try:
-            s = creator.SocketCreator().create(self.host, self.port)
+            s = creator.SocketCreator.create(self.host, self.port)
             s.listen(5)
             print('[+] Listening for connections on port')
         except socket.error:
